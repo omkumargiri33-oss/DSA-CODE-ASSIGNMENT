@@ -1,28 +1,31 @@
-WHAT DO YOU MEAN BY POINTERS? WRITE A CODE HOW YOU CAN INITIALISE THE POINTER.
-ANS:-A Pointer is a variable that stores the memory address of another variable.
-.The address-of operator (&) is used to get the memory address of a variable.
-.The dereference operator (*) is used to access the value stored at the memory address held by the pointer.
-
-Code Example: Declaring and Initializing a Pointer
-
 #include <stdio.h>
 
-int main() {
-    // 1. Declare a normal integer variable
-    int num = 42;
+#define MAX 5
 
-    // 2. Declare a pointer variable (must be of the same type as the variable it points to)
-    // The '*' indicates that 'ptr_num' is a pointer to an integer.
-    int *ptr_num;
+int main()
+{
+    int deque[MAX];
+    int front = 2, rear = 2;
+    int i;
 
-    // 3. Initialize the pointer:
-    // Store the memory address of 'num' into 'ptr_num' using the address-of operator (&).
-    ptr_num = &num;
+    deque[front] = 10;
 
-    // Output:
-    printf("Value of num: %d\n", num);                  // 42
-    printf("Address of num (and value of ptr_num): %p\n", &num);
-    printf("Value at the address pointed to by ptr_num (*ptr_num): %d\n", *ptr_num); // 42
+    rear++;
+    deque[rear] = 20;
+
+    front--;
+    deque[front] = 30;
+
+    front++;
+
+    rear--;
+
+    printf("Remaining elements: ");
+
+    for(i = front; i <= rear; i++)
+    {
+        printf("%d ", deque[i]);
+    }
 
     return 0;
 }
