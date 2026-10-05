@@ -1,0 +1,47 @@
+#include <stdio.h>
+#define MAX 5
+
+int q[MAX];
+int front = -1, rear = -1;
+
+int main()
+{
+    int i;
+
+    // Insert 10, 20, 30, 40, 50
+    for(i = 10; i <= 50; i += 10)
+    {
+        rear = (rear + 1) % MAX;
+        q[rear] = i;
+
+        if(front == -1)
+            front = 0;
+    }
+
+    // Delete first two elements
+    front = (front + 1) % MAX;
+    front = (front + 1) % MAX;
+
+    // Insert 60
+    rear = (rear + 1) % MAX;
+    q[rear] = 60;
+
+    // Insert 70
+    rear = (rear + 1) % MAX;
+    q[rear] = 70;
+
+    // Display queue
+    printf("Final Queue: ");
+
+    i = front;
+    do
+    {
+        printf("%d ", q[i]);
+        i = (i + 1) % MAX;
+    }
+    while(i != (rear + 1) % MAX);
+
+    return 0;
+}
+output:-👇🏻
+Final Queue: 30 40 50 60 70
