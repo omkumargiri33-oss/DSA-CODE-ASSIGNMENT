@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node
+{
+    int data;
+    struct node *Next;
+};
+
+int main()
+{
+    struct node *header, *n1, *n2, *temp;
+
+    // Creating header node
+    header = malloc(sizeof(struct node));
+    header->Next = NULL;
+
+    // Creating first node
+    n1 = malloc(sizeof(struct node));
+    n1->data = 10;
+    n1->Next = NULL;
+
+    // Creating second node
+    n2 = malloc(sizeof(struct node));
+    n2->data = 20;
+    n2->Next = NULL;
+
+    // Linking nodes
+    header->Next = n1;
+    n1->Next = n2;
+
+    // Displaying linked list
+    temp = header->Next;
+
+    while(temp != NULL)
+    {
+        printf("%d ", temp->data);
+        temp = temp->Next;
+    }
+
+    return 0;
+}
